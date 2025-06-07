@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import AddBalance from "./addBalance";
 
 export default function WalletBalance() {
+  let [open, setOpen] = useState(false);
+
+  let handleClick = () => {
+    console.log("button is clicked");
+    setOpen(true);
+  };
+
+  let handleClose = () => {
+    console.log('close button is clicked');
+    setOpen(false);
+  }
+
   return (
+    <>
+    
     <div
       className="WalletContainer"
       style={{
@@ -40,17 +55,18 @@ export default function WalletBalance() {
             height: "38px",
             color: "white",
             textAlign: "center",
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '13px',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "13px",
           }}
+          onClick={handleClick}
         >
           + Add Income
         </button>
       </div>
     </div>
+    <AddBalance isOpen={open} isClose={handleClose}/>
+    </>
   );
 }
-
-

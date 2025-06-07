@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import AddExpenses from './addExpenses';
 
 export default function Expenses() {
+
+  let [open, setOpen] = useState(false);
+
+  let handleClick = () => setOpen(true);
+
+  let handleClose = () => setOpen(false);
+
   return (
+    <>
+    
     <div
       className="expenseContainer"
       style={{
@@ -45,10 +55,13 @@ export default function Expenses() {
             justifyContent: 'center',
             fontSize: '13px',
           }}
+          onClick={handleClick}
         >
           + Add Expense
         </button>
       </div>
     </div>
+    <AddExpenses isOpen={open} isClose={handleClose}/>
+    </>
   );
 }
