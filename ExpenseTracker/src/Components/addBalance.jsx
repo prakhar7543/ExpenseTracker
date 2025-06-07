@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
@@ -7,7 +7,42 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import WalletBalance from "./wallet";
 
-export default function AddBalance({ isOpen, isClose }) {
+export default function AddBalance({ isOpen, isClose, onBalanceAdded }) {
+  // let [balance, setBalance] = useState(0);
+  let [amountAdded, setAmountAdded] = useState(0);
+
+  // function showTotalBalance(){
+  //   let totalAmount = JSON.parse(localStorage.getItem('balance'));
+  //   setBalance(totalAmount);
+  // }
+
+  // function setAmountToLocalStorage(amount) {
+  //   localStorage.setItem("balance", JSON.stringify(amount));
+  // }
+
+  
+
+  let handleChange = (e) => {
+    let amount = e.target.value;
+    setAmountAdded(amount);
+  };
+
+  let handleClick = () => {
+    if (!amountAdded) {
+      return;
+    }
+    let oldBalance = parseFloat(localStorage.getItem('balance')) || 0;
+    let newBalance = oldBalance + parseFloat(amountAdded);
+
+    localStorage.setItem('balance', JSON.stringify(newBalance));
+
+    onBalanceAdded();
+    isClose();
+    // setAmountToLocalStorage(amountAdded);
+    // onBalanceAdded();
+    // isClose();
+  };
+
   return (
     <React.Fragment>
       <style>
@@ -66,7 +101,7 @@ export default function AddBalance({ isOpen, isClose }) {
             // sx={{ width: "100%", height: "100%" }}
           >
             <input
-              type="text"
+              type="number"
               placeholder="Income Amount"
               style={{
                 width: "215px",
@@ -75,14 +110,16 @@ export default function AddBalance({ isOpen, isClose }) {
                 border: "1px solid #D9D9D9",
                 boxShadow: "0px 4px 4px 0px #00000040",
                 color: "#919191",
-                paddingLeft: '15px'
+                paddingLeft: "15px",
               }}
+              onChange={handleChange}
             />
           </DialogContentText>
 
           <DialogActions>
             <Button
-              onClick={isClose}
+              type="submit"
+              onClick={handleClick}
               sx={{
                 width: "145px",
                 height: "50px",

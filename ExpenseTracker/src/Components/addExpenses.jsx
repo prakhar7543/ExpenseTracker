@@ -25,7 +25,7 @@ export default function AddExpenses({ isOpen, isClose }) {
         sx={{
           "& .MuiDialog-paper": {
             width: "540px",
-            height: "325px",
+            height: "310px",
             backgroundColor: "#EFEFEFD9",
             borderRadius: "15px",
             textAlign: "start",
@@ -73,11 +73,11 @@ export default function AddExpenses({ isOpen, isClose }) {
                 border: "1px solid #D9D9D9",
                 boxShadow: "0px 4px 4px 0px #00000040",
                 color: "#919191",
-                paddingLeft: '15px'
+                paddingLeft: "15px",
               }}
             />
             <input
-              type="text"
+              type="number"
               placeholder="Price"
               style={{
                 width: "215px",
@@ -86,7 +86,7 @@ export default function AddExpenses({ isOpen, isClose }) {
                 border: "1px solid #D9D9D9",
                 boxShadow: "0px 4px 4px 0px #00000040",
                 color: "#919191",
-                paddingLeft: '15px'
+                paddingLeft: "15px",
               }}
             />
             <input
@@ -99,7 +99,7 @@ export default function AddExpenses({ isOpen, isClose }) {
                 border: "1px solid #D9D9D9",
                 boxShadow: "0px 4px 4px 0px #00000040",
                 color: "#919191",
-                paddingLeft: '15px'
+                paddingLeft: "15px",
               }}
             />
             <input
@@ -112,7 +112,7 @@ export default function AddExpenses({ isOpen, isClose }) {
                 border: "1px solid #D9D9D9",
                 boxShadow: "0px 4px 4px 0px #00000040",
                 color: "#919191",
-                paddingLeft: '15px'
+                paddingLeft: "15px",
               }}
             />
           </DialogContentText>
@@ -123,12 +123,13 @@ export default function AddExpenses({ isOpen, isClose }) {
             alignItems: "center",
             justifyContent: "flex-start",
             paddingLeft: "40px",
-            gap: '10px',
-            marginBottom: '20px'
+            gap: "10px",
+            marginBottom: "20px",
           }}
         >
           <Button
             onClick={isClose}
+            type="submit"
             sx={{
               width: "223px",
               height: "50px",

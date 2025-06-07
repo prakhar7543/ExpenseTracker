@@ -12,9 +12,9 @@ export default function HeroComponent() {
         backgroundColor: "#626262",
         margin: "auto",
         display: "flex",
-        justifyContent: 'space-around',
-        alignItems: 'center',
-        borderRadius: '10px',
+        justifyContent: "space-around",
+        alignItems: "center",
+        borderRadius: "10px",
       }}
     >
       <WalletBalance />

@@ -6,7 +6,7 @@ export default function AppTracker() {
     <div
       className="container"
       style={{
-        backgroundColor: "black",
+        backgroundColor: "#3B3B3B",
         width: "95vw",
         height: "100vh",
         margin: "auto",
@@ -14,7 +14,7 @@ export default function AppTracker() {
       }}
     >
       <div className="content">
-        <h2 style={{ color: "white", paddingLeft: "32px" }}>Expense Tracker</h2>
+        <h2 style={{ color: "white", paddingLeft: "32px", paddingTop: '7px' }}>Expense Tracker</h2>
         <HeroComponent />
       </div>
     </div>
