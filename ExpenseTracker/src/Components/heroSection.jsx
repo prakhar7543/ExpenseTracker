@@ -3,6 +3,7 @@ import WalletBalance from "./wallet";
 import Expenses from "./expenses";
 import PieChartTracker from "./pieChart";
 import RecentTransactions from "./recentTransactions";
+import BarGraph from "./barGraph";
 
 export default function HeroComponent() {
   let [balance, setBalance] = useState("");
@@ -72,6 +73,7 @@ export default function HeroComponent() {
     let list = [];
     savedTransaction.forEach((item) => {
       list.push({
+        id: item.id,
         title: item.title,
         price: item.price,
         categoryImage: item.categoryImage,
@@ -119,12 +121,30 @@ export default function HeroComponent() {
             marginTop: "25px",
             marginBottom: "unset",
             fontStyle: "italic",
-            fontWeight: '700',
+            fontWeight: "700",
+            display: "flex",
           }}
         >
           Recent Transactions
         </h2>
-        <RecentTransactions transactionList={transactionList} />
+
+        <div
+          className="childMainContainer"
+          style={{
+            justifyContent: "space-between",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <RecentTransactions
+            transactionList={transactionList}
+            refreshBalance={refreshBalance}
+            refreshExpense={refreshExpense}
+            refreshCategory={refreshCategory}
+            refreshTransaction={refreshTransaction}
+          />
+          <BarGraph category={categoryData} />
+        </div>
       </div>
     </div>
   );
