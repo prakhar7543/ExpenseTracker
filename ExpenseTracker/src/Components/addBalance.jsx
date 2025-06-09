@@ -11,17 +11,6 @@ export default function AddBalance({ isOpen, isClose, onBalanceAdded }) {
   // let [balance, setBalance] = useState(0);
   let [amountAdded, setAmountAdded] = useState(0);
 
-  // function showTotalBalance(){
-  //   let totalAmount = JSON.parse(localStorage.getItem('balance'));
-  //   setBalance(totalAmount);
-  // }
-
-  // function setAmountToLocalStorage(amount) {
-  //   localStorage.setItem("balance", JSON.stringify(amount));
-  // }
-
-  
-
   let handleChange = (e) => {
     let amount = e.target.value;
     setAmountAdded(amount);
@@ -31,16 +20,13 @@ export default function AddBalance({ isOpen, isClose, onBalanceAdded }) {
     if (!amountAdded) {
       return;
     }
-    let oldBalance = parseFloat(localStorage.getItem('balance')) || 0;
+    let oldBalance = parseFloat(localStorage.getItem("balance")) || 0;
     let newBalance = oldBalance + parseFloat(amountAdded);
 
-    localStorage.setItem('balance', JSON.stringify(newBalance));
+    localStorage.setItem("balance", JSON.stringify(newBalance));
 
     onBalanceAdded();
     isClose();
-    // setAmountToLocalStorage(amountAdded);
-    // onBalanceAdded();
-    // isClose();
   };
 
   return (

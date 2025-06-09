@@ -1,15 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import AddBalance from "./addBalance";
+import AddExpenses from './expenses';
 
-export default function WalletBalance() {
+export default function WalletBalance({walletBalance, refreshBalance}) {
   let [open, setOpen] = useState(false);
-  let [balance, setBalance] = useState(0);
-
-  function showTotalBalance() {
-    setBalance('');
-    let totalAmount = JSON.parse(localStorage.getItem("balance")) || 0;
-    setBalance(totalAmount);
-  }
+ 
 
   let handleClick = () => {
     console.log("button is clicked");
@@ -52,7 +47,7 @@ export default function WalletBalance() {
               fontSize: "30px",
             }}
           >
-            {`Wallet Balance: ₹${balance}`}
+            {`Wallet Balance: ₹${walletBalance}`}
           </p>
           <button
             type="button"
@@ -76,8 +71,9 @@ export default function WalletBalance() {
       <AddBalance
         isOpen={open}
         isClose={handleClose}
-        onBalanceAdded={showTotalBalance}
+        onBalanceAdded={refreshBalance}
       />
+      
     </>
   );
 }

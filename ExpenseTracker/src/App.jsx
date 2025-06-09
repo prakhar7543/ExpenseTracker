@@ -3,17 +3,14 @@ import AppTracker from "./Components/appTracker";
 import WalletBalance from './Components/wallet';
 import Expenses from './Components/expenses';
 import PieChartTracker from './Components/pieChart';
+import { SnackbarProvider } from "notistack";
 
 
 function App() {
   return (
-    <>
-      {/* <AppTracker /> */}
-      {/* <WalletBalance /> */}
-      {/* <Expenses /> */}
-      {/* <PieChartTracker /> */}
+    <SnackbarProvider>
       <AppTracker />
-    </>
+    </SnackbarProvider>
   );
 }
 

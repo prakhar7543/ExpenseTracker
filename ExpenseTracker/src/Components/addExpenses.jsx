@@ -1,13 +1,84 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import { useSnackbar } from "notistack";
+import WalletBalance from "./wallet";
 import Expenses from "./expenses";
+import { Snackbar } from "@mui/material";
+import samosa from "../assets/samosa.png";
+import shoping from "../assets/shoping.png";
+import travel from "../assets/travel.png";
 
-export default function AddExpenses({ isOpen, isClose }) {
+export default function AddExpenses({ isOpen, isClose, onExpenseAdded }) {
+  let [title, setTitle] = useState("");
+  let [price, setPrice] = useState("");
+  let [category, setCategory] = useState("");
+  let [categoryImage, setCategoryImage] = useState("");
+  let [date, setDate] = useState("");
+  let [walletBalance, setWalletBalance] = useState("");
+  let { enqueueSnackbar } = useSnackbar();
+
+  function walletBalanceInLocalStorage() {
+    let totalBalance = parseFloat(localStorage.getItem("balance")) || 0;
+    setWalletBalance(totalBalance);
+  }
+
+  useEffect(() => {
+    walletBalanceInLocalStorage();
+  }, [price, walletBalance]);
+
+  function addToLocalStorage() {
+    if (!title || !price || !category || !date || !categoryImage) {
+      return;
+    }
+
+    let newExpense = {
+      id: Date.now(),
+      title,
+      price: parseFloat(price),
+      category,
+      categoryImage: categoryImage ,
+      date: date,
+    };
+
+    let existingData = JSON.parse(localStorage.getItem("expenses")) || [];
+    existingData.push(newExpense);
+    localStorage.setItem("expenses", JSON.stringify(existingData));
+  }
+
+  let handleClick = () => {
+    if (price > walletBalance) {
+      enqueueSnackbar("Insufficient Balance", { variant: "error" });
+      return;
+    }
+
+    addToLocalStorage();
+    let newWalletBalance = walletBalance - parseFloat(price);
+    localStorage.setItem("balance", JSON.stringify(newWalletBalance));
+    setWalletBalance(newWalletBalance);
+    onExpenseAdded();
+
+    isClose();
+  };
+
+  let handleCategoryChange = (e) => {
+    let categoryName = e.target.value;
+    if (categoryName) {
+      if (categoryName == "travel") {
+        setCategoryImage(travel);
+      } else if (categoryName == "food") {
+        setCategoryImage(samosa);
+      } else if (categoryName === "shopping") {
+        setCategoryImage(shoping);
+      }
+    }
+    setCategory(categoryName);
+  };
+
   return (
     <React.Fragment>
       <style>
@@ -75,6 +146,7 @@ export default function AddExpenses({ isOpen, isClose }) {
                 color: "#919191",
                 paddingLeft: "15px",
               }}
+              onChange={(e) => setTitle(e.target.value)}
             />
             <input
               type="number"
@@ -88,12 +160,14 @@ export default function AddExpenses({ isOpen, isClose }) {
                 color: "#919191",
                 paddingLeft: "15px",
               }}
+              onChange={(e) => setPrice(e.target.value)}
             />
-            <input
-              type="text"
-              placeholder="Select Category"
+
+            <select
+              name="category"
+              id="category"
               style={{
-                width: "215px",
+                width: "234px",
                 height: "50px",
                 borderRadius: "15px",
                 border: "1px solid #D9D9D9",
@@ -101,7 +175,14 @@ export default function AddExpenses({ isOpen, isClose }) {
                 color: "#919191",
                 paddingLeft: "15px",
               }}
-            />
+              onChange={handleCategoryChange}
+            >
+              <option value="">Select Category</option>
+              <option value="travel">Travel</option>
+              <option value="food">Food</option>
+              <option value="shopping">Shopping</option>
+            </select>
+
             <input
               type="date"
               placeholder="dd/mm/yyyy"
@@ -114,6 +195,7 @@ export default function AddExpenses({ isOpen, isClose }) {
                 color: "#919191",
                 paddingLeft: "15px",
               }}
+              onChange={(e) => setDate(e.target.value)}
             />
           </DialogContentText>
         </DialogContent>
@@ -128,7 +210,7 @@ export default function AddExpenses({ isOpen, isClose }) {
           }}
         >
           <Button
-            onClick={isClose}
+            onClick={handleClick}
             type="submit"
             sx={{
               width: "223px",

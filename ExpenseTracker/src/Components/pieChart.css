@@ -1,0 +1,15 @@
+.recharts-default-legend {
+  position: absolute;
+  width: 300px;
+  height: 50px;
+  left: -45px;
+  bottom: 7px;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* svg.recharts-surface{
+    height: 112%;
+} */

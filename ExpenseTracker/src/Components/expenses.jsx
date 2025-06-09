@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import AddExpenses from "./addExpenses";
 
-export default function Expenses() {
+export default function Expenses({
+  refreshBalance,
+  refreshExpense,
+  expense,
+  refreshCategory,
+  refreshTransaction,
+}) {
   let [open, setOpen] = useState(false);
+  // let [expense, setExpense] = useState(0);
 
   let handleClick = () => setOpen(true);
 
@@ -39,7 +46,7 @@ export default function Expenses() {
               fontSize: "30px",
             }}
           >
-            Expenses: ₹500
+            {`Expenses: ₹${expense}`}
           </p>
           <button
             type="button"
@@ -60,7 +67,16 @@ export default function Expenses() {
           </button>
         </div>
       </div>
-      <AddExpenses isOpen={open} isClose={handleClose} />
+      <AddExpenses
+        isOpen={open}
+        isClose={handleClose}
+        onExpenseAdded={() => {
+          refreshExpense();
+          refreshBalance();
+          refreshCategory();
+          refreshTransaction();
+        }}
+      />
     </>
   );
 }
