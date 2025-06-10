@@ -7,7 +7,7 @@ import BarGraph from "./barGraph";
 import './mobileView.css';
 
 export default function HeroComponent() {
-  let [balance, setBalance] = useState('5000');
+  let [balance, setBalance] = useState('');
   let [expense, setExpense] = useState("");
   let [categoryData, setCategoryData] = useState([]);
   let [transactionList, setTransactionList] = useState([]);
@@ -35,7 +35,7 @@ export default function HeroComponent() {
   }, []);
 
   let refreshBalance = () => {
-    let savedBalance = JSON.parse(localStorage.getItem("balance")) || 0;
+    let savedBalance = JSON.parse(localStorage.getItem("balance")) || 5000;
     setBalance(savedBalance);
   };
 

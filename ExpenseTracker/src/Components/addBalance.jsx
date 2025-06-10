@@ -20,7 +20,7 @@ export default function AddBalance({ isOpen, isClose, onBalanceAdded }) {
     if (!amountAdded) {
       return;
     }
-    let oldBalance = parseFloat(localStorage.getItem("balance")) || 0;
+    let oldBalance = parseFloat(localStorage.getItem("balance")) || 5000;
     let newBalance = oldBalance + parseFloat(amountAdded);
 
     localStorage.setItem("balance", JSON.stringify(newBalance));
