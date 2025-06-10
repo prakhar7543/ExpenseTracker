@@ -13,7 +13,7 @@ export default function HeroComponent() {
   let [transactionList, setTransactionList] = useState([]);
 
   useEffect(() => {
-    let savedBalance = JSON.parse(localStorage.getItem("balance")) || 0;
+    let savedBalance = JSON.parse(localStorage.getItem("balance")) || 5000;
     setBalance(savedBalance);
   }, []);
 

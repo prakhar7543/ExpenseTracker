@@ -1,15 +1,9 @@
 // import "./styles.css";
 import React from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
-import './mobileView.css';
+import "./mobileView.css";
 
-// const data = [
-//   { name: "Enter", uv: 2400 },
-//   { name: "Food", uv: 1400 },
-//   { name: "Travel", uv: 800 },
-// ];
-
-export default function BarGraph({category}) {
+export default function BarGraph({ category }) {
   return (
     <div
       className="barGraphContainer"
@@ -19,10 +13,10 @@ export default function BarGraph({category}) {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        backgroundColor: 'white',
-        borderRadius: '15px',
-        marginTop: '9px',
-        marginRight: '32px',
+        backgroundColor: "white",
+        borderRadius: "15px",
+        marginTop: "9px",
+        marginRight: "32px",
       }}
     >
       <BarChart
@@ -36,9 +30,13 @@ export default function BarGraph({category}) {
         <XAxis type="number" hide />
         <YAxis dataKey="name" type="category" />
         <Tooltip />
-        <Bar dataKey="price" fill="#A78BFA" barSize={20} radius={[0, 10, 10, 0]} />
+        <Bar
+          dataKey="price"
+          fill="#A78BFA"
+          barSize={20}
+          radius={[0, 10, 10, 0]}
+        />
       </BarChart>
     </div>
   );
 }
-
