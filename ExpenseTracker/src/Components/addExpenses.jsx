@@ -38,7 +38,7 @@ export default function AddExpenses({ isOpen, isClose, onExpenseAdded }) {
 
     let newExpense = {
       id: Date.now(),
-      title,
+      title: title.capitalise(),
       price: parseFloat(price),
       category,
       categoryImage: categoryImage ,
