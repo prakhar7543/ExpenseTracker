@@ -2,6 +2,7 @@
 import React from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
 import "./mobileView.css";
+import './barGraph.css';
 
 export default function BarGraph({ category }) {
   return (
@@ -9,7 +10,7 @@ export default function BarGraph({ category }) {
       className="barGraphContainer"
       style={{
         height: "366px",
-        width: "417px",
+        width: "430px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -17,6 +18,7 @@ export default function BarGraph({ category }) {
         borderRadius: "15px",
         marginTop: "9px",
         marginRight: "32px",
+        marginLeft: '15px'
       }}
     >
       <BarChart

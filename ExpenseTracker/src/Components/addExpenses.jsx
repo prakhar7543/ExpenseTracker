@@ -73,7 +73,7 @@ export default function AddExpenses({ isOpen, isClose, onExpenseAdded }) {
         setCategoryImage(travel);
       } else if (categoryName == "food") {
         setCategoryImage(samosa);
-      } else if (categoryName === "shopping") {
+      } else if (categoryName === "entertainment") {
         setCategoryImage(shoping);
       }
     }
@@ -181,7 +181,7 @@ export default function AddExpenses({ isOpen, isClose, onExpenseAdded }) {
               <option value="">Select Category</option>
               <option value="travel">Travel</option>
               <option value="food">Food</option>
-              <option value="shopping">Shopping</option>
+              <option value="entertainment">Entertainment</option>
             </select>
 
             <input

@@ -138,7 +138,7 @@ export default function HeroComponent() {
           style={{
             justifyContent: "space-between",
             display: "flex",
-            alignItems: "center",
+            alignItems: "flex-start",
           }}
         >
           <RecentTransactions
