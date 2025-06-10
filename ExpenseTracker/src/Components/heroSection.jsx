@@ -14,6 +14,7 @@ export default function HeroComponent() {
 
   useEffect(() => {
     let savedBalance = JSON.parse(localStorage.getItem("balance")) || 5000;
+    localStorage.setItem('balance', JSON.stringify(savedBalance));
     setBalance(savedBalance);
   }, []);
 

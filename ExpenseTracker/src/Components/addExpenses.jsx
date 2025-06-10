@@ -38,12 +38,13 @@ export default function AddExpenses({ isOpen, isClose, onExpenseAdded }) {
 
     let newExpense = {
       id: Date.now(),
-      title: title.capitalise(),
+      title: `${title.charAt(0).toUpperCase()}${title.slice(1).toLowerCase()}`,
       price: parseFloat(price),
       category,
-      categoryImage: categoryImage ,
+      categoryImage: categoryImage,
       date: date,
     };
+
 
     let existingData = JSON.parse(localStorage.getItem("expenses")) || [];
     existingData.push(newExpense);
