@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import AddBalance from "./addBalance";
 import AddExpenses from './expenses';
+import './mobileView.css';
 
 export default function WalletBalance({walletBalance, refreshBalance}) {
   let [open, setOpen] = useState(false);

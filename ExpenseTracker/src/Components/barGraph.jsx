@@ -1,6 +1,7 @@
 // import "./styles.css";
 import React from "react";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from "recharts";
+import './mobileView.css';
 
 // const data = [
 //   { name: "Enter", uv: 2400 },

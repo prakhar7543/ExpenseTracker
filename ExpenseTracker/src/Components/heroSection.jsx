@@ -4,9 +4,10 @@ import Expenses from "./expenses";
 import PieChartTracker from "./pieChart";
 import RecentTransactions from "./recentTransactions";
 import BarGraph from "./barGraph";
+import './mobileView.css';
 
 export default function HeroComponent() {
-  let [balance, setBalance] = useState("");
+  let [balance, setBalance] = useState('5000');
   let [expense, setExpense] = useState("");
   let [categoryData, setCategoryData] = useState([]);
   let [transactionList, setTransactionList] = useState([]);
@@ -90,7 +91,7 @@ export default function HeroComponent() {
         className="heroContainer"
         style={{
           width: "95%",
-          height: "270px",
+          height: "100%",
           backgroundColor: "#626262",
           margin: "auto",
           display: "flex",
@@ -113,7 +114,9 @@ export default function HeroComponent() {
         <PieChartTracker category={categoryData} />
       </div>
 
-      <div className="mainContainer">
+      <div className="mainContainer" style={{marginBottom:'30px'}}>
+
+        <div className="transactionHeader">
         <h2
           style={{
             color: "white",
@@ -127,6 +130,7 @@ export default function HeroComponent() {
         >
           Recent Transactions
         </h2>
+        </div>
 
         <div
           className="childMainContainer"

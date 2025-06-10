@@ -1,0 +1,146 @@
+/* @media screen and (max-width: 768px) {
+  .outerContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .heroContainer {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  h1{
+    text-align: center;
+  }
+
+  .WalletContainer{
+    margin-top: 20px;
+    width: 90%;
+  }
+
+  .wallentContent{
+    width: 100%;
+  }
+} */
+
+@media screen and (max-width: 768px) {
+  /* Entire layout stacks vertically */
+  :root {
+    overflow-x: hidden;
+  }
+
+  .header {
+    padding-top: 10px;
+  }
+
+  .container {
+    margin: auto;
+    height: 100%;
+  }
+
+  .outerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .heroContainer {
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+    padding: 10px 0;
+    align-items: center;
+  }
+
+  .WalletContainer,
+  .expenseContainer {
+    width: 90% !important;
+    height: auto;
+    padding: 10px 0;
+  }
+
+  .WalletContainer p,
+  .expenseContainer p {
+    font-size: 36px !important; /* You can increase or decrease this as needed */
+    margin-bottom: 20px;
+  }
+  .WalletContainer button,
+  .expenseContainer button {
+    width: 200px !important; /* increase button width */
+    height: 50px !important; /* increase button height */
+    font-size: 16px !important;
+    margin-bottom: 30px;
+  }
+
+  .wallentContent,
+  .expenseContent {
+    width: 100%;
+    text-align: center;
+  }
+
+  .pieChartContainer {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .mainContainer {
+    width: 100%;
+    flex-direction: column;
+    padding: 0 10px;
+  }
+
+  .childMainContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 95%;
+  }
+
+  h1 {
+    /* margin: 20px 0 10px 0 !important; */
+    text-align: center;
+    margin: 0px 0px 15px 0px;
+  }
+
+  .recentTransactionsContainer {
+    width: 90%;
+  }
+
+  .barGraphContainer {
+    width: 90%;
+  }
+
+  /* .mainContainer {
+
+  } */
+
+  .transactionHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .transactionContainer{
+    width: 100% !important;
+  }
+
+  .ListContainer{
+    width: 100%;
+  }
+
+  hr{
+    /* margin: auto; */
+    width: 85vw !important;
+  }
+
+  .barGraphContainer {
+  display: none !important;
+}
+}
+
+

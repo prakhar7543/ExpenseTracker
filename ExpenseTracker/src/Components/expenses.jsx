@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import AddExpenses from "./addExpenses";
+import './mobileView.css';
 
 export default function Expenses({
   refreshBalance,

@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import cancel from "../assets/cancel.png";
 import edit from "../assets/edit.png";
 import EditExpenses from "./editExpense";
+import './mobileView.css';
 
 export default function RecentTransactions({
   transactionList,
