@@ -52,6 +52,8 @@ export default function HeroComponent() {
   let refreshCategory = () => {
     let savedCategory = JSON.parse(localStorage.getItem("expenses")) || [];
 
+     let  defaultCategories = ["Food", "Entertainment", "Travel"];
+
     let categoryMap = {};
 
     savedCategory.forEach((item) => {
@@ -61,6 +63,12 @@ export default function HeroComponent() {
         categoryMap[item.category] = item.price;
       }
     });
+
+    defaultCategories.forEach((item) => {
+    if (!categoryMap[item]) {
+      categoryMap[item] = 0;
+    }
+  });
 
     let newCategoryArray = Object.keys(categoryMap).map((key) => ({
       name: key,
