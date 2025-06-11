@@ -45,7 +45,6 @@ export default function AddExpenses({ isOpen, isClose, onExpenseAdded }) {
       date: date,
     };
 
-
     let existingData = JSON.parse(localStorage.getItem("expenses")) || [];
     existingData.push(newExpense);
     localStorage.setItem("expenses", JSON.stringify(existingData));
@@ -136,6 +135,7 @@ export default function AddExpenses({ isOpen, isClose, onExpenseAdded }) {
             sx={{ width: "100%", height: "100%" }}
           >
             <input
+              name="title"
               type="text"
               placeholder="Title"
               style={{
@@ -150,6 +150,7 @@ export default function AddExpenses({ isOpen, isClose, onExpenseAdded }) {
               onChange={(e) => setTitle(e.target.value)}
             />
             <input
+              name="price"
               type="number"
               placeholder="Price"
               style={{
@@ -185,6 +186,7 @@ export default function AddExpenses({ isOpen, isClose, onExpenseAdded }) {
             </select>
 
             <input
+              name="date"
               type="date"
               placeholder="dd/mm/yyyy"
               style={{
